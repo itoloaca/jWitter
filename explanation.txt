@@ -1,0 +1,63 @@
+Title & key phrase & logo
+=========================
+We will use the title "jWitter" to imply a synergy between Twitter and
+Jacobs.
+
+Motto (key phrase): "Unleash your Jacobs Spirit (in 140 characters or less)"
+
+Logo: We plan on having an epiphanic dove[1] inside the Jacobs Logo[2] to
+remind the users that they can enjoy the freedom of their thoughts and share
+this wonderful experience with others (no shades will be used).
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+We have respected the title, key phrase and logo which we proposed in the design document. The logo was design in an even more prominent manner.
+
+
+
+Overall look & feel
+=========================
+It is a relaxing and simultaneously inspiring corporate design with a simple
+but functional and efficient meta bar at the top, a logo field in the left
+upper corner that exploits high brightness to raise the level of recognition
+and a trendy 3D effect realized with the help of an artistic natural
+background.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+The look and feel is indeed relaxing, with light tones and due to its innate intuitivity and ease of access, which is owned in part to a very light-weight page configuration and in part to the low number of components that do not confuse the user respecting the magical rule of 7.
+
+https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two
+
+Colors: primary / secondary / background
+=========================
+
+The dominant color will be white (RGB: #FFFFFFFF), because the white background
+predominates. The text will largely be black (RGB: #FF000000), but the URLs
+will be blue (RGB: #FF0000FF) and the timestamps ("posted almost 2 hours ago")
+will be gray (RGB: #FF999999), to avoid distracting the user from the main
+content.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+It is immediately observable by looking at the page that we have used the colors set forth before. It is also trivially provable that pi is n pi by 
+using a relaxing eco system user design.
+
+Window subdivision
+=========================
+In addition to the structure introduced at "Overall look & feel" we have made
+the following design decisions:
+
+The navigation bar will be fused with the meta bar to save space estate on the
+page for a better user experience.
+
+On the left side of the starting page, we will have a post composer to showcase
+the preferred action in a prominent manner.
+
+Having taken this design decisions, we target the "front door" home page
+approach (have nice & appealing impressions first, information area later).
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+The windows subdivision indeed follows our perspicuous proposed implementation,
+concerning the fusion between the meta bar and navigation bar as well as presenting ourselves using a front door home page approach (have nice & appealing impressions first, information area later). However, we do not yet have the composer to showcase or, otherwise suggest, the preferred user action in a prominent manner because we have only designed the home page which is accesible to non-registered users. The composer, however, is behind the login wall.
+
+
+[1] http://goo.gl/CsDz2D
+[2] https://pbs.twimg.com/profile_images/537630834795085826/lfVYPSVq.jpeg
