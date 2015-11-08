@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>jWitter</title>
     
 <!--[if lt IE 9]>
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/custom.css">
 
 </head>
-  <body>
+<body>
     <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
@@ -28,38 +28,4 @@
     </div>
   </div>
 </header>
-
-  
-    <div class="container">
-        <div class="center hero-unit" style="background-color: #e6f3f7;">
-    <h1>Welcome to jWitter</h1>
-
-    <h2>
-      You are currently viewing the homepage for the 
-        <a href="#">jWitter</a>
-      application.  
-    </h2>
-
-    <a href="#" class="btn btn-primary btn-large">Sign up now!</a>
-  </div>
-
-      <footer class="footer">
-  <small>
-    <a href="#">DBWA Project</a>
-    by Sparta
-  </small>
-  <nav>
-    <ul>
-      <li><a href="imprint">Imprint</a></li>
-      <li><a href="mailto:sparta@athena.gr">Contact</a></li>
-    </ul>
-  </nav>
-</footer>
-
-
-      
-    </div>
-    <!-- Latest compiled and minified JavaScript -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-  </body>
-</html>
+<div class="container">
