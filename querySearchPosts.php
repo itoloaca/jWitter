@@ -29,18 +29,23 @@ if (!$result) {
 }
  
 echo "<h2>Posts from $email</h2>";
+if (mysql_num_rows($result) == 0) {
+	echo "<h5 style='color: red;'>No results found!</h5>";
+	die();
+}
 echo "<ol class='posts'>";
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
-	$content = $row[0];
-	$postId = $row[1];
-	$createdAt = $row[2];
+	$preview = substr($row[0], $PREVIEW_LENGTH) . "...";
+	$content_encoded = urlencode($row[0]);
+	$postId = urlencode($row[1]);
+	$createdAt = urlencode($row[2]);
+	$email = urlencode($email);
 
 	$href = "detailPosts.php?" .
-			"content=$content&" . 
+			"content=$content_encoded&" . 
 			"postId=$postId&" .
-			"createdAt=$createdAt";
-	$href = urlencode($href);
-	$preview = substr($content, $PREVIEW_LENGTH) . "...";
+			"createdAt=$createdAt&" .
+			"email=$email";
     echo "<li><a href='$href'>$preview</a></li>";
 }
 echo "</ol>";

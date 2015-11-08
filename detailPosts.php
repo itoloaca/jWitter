@@ -3,19 +3,19 @@ include('php/header.php');
 ?>
 
 <div class="hero-unit" style="background-color: #e6f3f7;">
-    <div class="row">
-    <div class="span6 offset3">
-    <h1>Search Posts</h1>
-        <form accept-charset="UTF-8" action="php/create_post.php" method="post"><div style="margin:0;padding:0;display:inline"></div>
-
-            <label for="email">Email</label>
-            <text id="email" name="email" rows="4"></text>
-            
-            <input class="btn btn-large btn-primary" name="submit" type="submit" value="Search" />
-        </form>
-  
-    </div>
-    </div>
+<?php
+    $email = urldecode($_GET['email']);
+    $content = $_GET['content'];
+    $postId = $_GET['postId'];
+    $createdAt = $_GET['createdAt'];
+    echo "<h2>Post with id $postId</h2>";
+    echo "<br>";
+    echo "<h5>Created at: $createdAt</h5>";
+    echo "<br>";
+	echo "<h5>By: $email</h5>";
+    echo "<br>";
+    echo "<h5 style='font-style: italic; color: gray;'>$content</h5>";
+?>
 </div>
 
 <?php

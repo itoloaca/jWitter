@@ -10,10 +10,10 @@ include('php/header.php');
 
             <label for="email">Email</label>
             <input id="email" name="email" size="30" type="text" />
-            
+
             <input class="btn btn-large btn-primary" name="submit" type="submit" value="Search" />
         </form>
-  
+
     </div>
     </div>
 </div>
