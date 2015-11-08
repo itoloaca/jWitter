@@ -10,32 +10,32 @@ include('php/header.php');
       <li><a href="create_follow">CREATE_FOLLOW</a></li>
       <br/>
       <li>
-      	  <a href="search/form/searchFollowedCount.php">
+      	  <a href="searchFollowedCount.php">
       		Search Followed Count
       	  </a>
       </li>
        <li>
-      	  <a href="search/form/searchFollowerNames.php">
+      	  <a href="searchFollowerNames.php">
       		Search Follower Names
       	  </a>
       </li>
        <li>
-      	  <a href="search/form/searchPosts.php">
+      	  <a href="searchPosts.php">
       		Search Posts
       	  </a>
       </li>
        <li>
-      	  <a href="search/form/searchRecentAuthors.php">
+      	  <a href="searchRecentAuthors.php">
       		Search Recent Authors
       	  </a>
       </li>
        <li>
-      	  <a href="search/form/searchUserForBDay.php">
+      	  <a href="searchUserForBDay.php">
       		Search Users For Birthday
       	  </a>
       </li>
        <li>
-      	  <a href="search/form/searchVendorsExp.php">
+      	  <a href="searchVendorsExp.php">
       		Search Vendors by Exposures
       	  </a>
       </li>
