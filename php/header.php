@@ -16,13 +16,13 @@
     <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-    <a href="/"><img alt="JwitterLogo" src="img/jWitterLogo.png" style="float: left;"/>
-      <a href="/" id="logo" style="text-transform: none;">&nbsp;&nbsp;jWitter</a>
+    <a href="index"><img alt="JwitterLogo" src="img/jWitterLogo.png" style="float: left;"/>
+      <a href="index" id="logo" style="text-transform: none;">&nbsp;&nbsp;jWitter</a>
       <nav>
         <ul class="nav pull-right">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index">Home</a></li>
             <li><a href="#">Sign in</a></li>
-            <li><a style="color:green" href="input_form_maintenance.html">Maintenance</a></li>
+            <li><a style="color:green" href="input_form_maintenance">Maintenance</a></li>
         </ul>
       </nav>
     </div>
