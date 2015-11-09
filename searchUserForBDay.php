@@ -6,7 +6,7 @@ include('php/header.php');
     <div class="row">
     <div class="span6 offset3">
     <h1>Search Posts</h1>
-        <form accept-charset="UTF-8" action="search/query/create_post.php" method="post"><div style="margin:0;padding:0;display:inline"></div>
+        <form accept-charset="UTF-8" action="queryUserForBDay.php" method="post"><div style="margin:0;padding:0;display:inline"></div>
 
             <label for="bday">Bday</label>
             <input id="bday" name="bday" size="30" type="date"/>

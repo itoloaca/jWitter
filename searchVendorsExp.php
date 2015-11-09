@@ -6,7 +6,7 @@ include('php/header.php');
     <div class="row">
     <div class="span6 offset3">
     <h1>Search Posts</h1>
-        <form accept-charset="UTF-8" action="search/query/create_post.php" method="post"><div style="margin:0;padding:0;display:inline"></div>
+        <form accept-charset="UTF-8" action="queryVendorsExp.php" method="post"><div style="margin:0;padding:0;display:inline"></div>
 
              <label for="minads">Min. number of ads</label>
             <input id="minads" name="minads" size="30" type="number" value="2" min="1"/>
