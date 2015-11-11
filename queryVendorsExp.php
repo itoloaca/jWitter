@@ -15,7 +15,7 @@ if (!$con) {
 mysql_select_db("dbwa_sparta", $con);
 
 
-$mindads = $_POST['minads'];
+$minads = $_POST['minads'];
 $sql = "SELECT Tmp.vendor
     from (select A.vendor as vendor, AVG(A.exposures) as avgexp
           from Ad A
