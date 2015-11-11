@@ -5,7 +5,7 @@ include('php/header.php');
 <div class="hero-unit" style="background-color: #e6f3f7;">
     <div class="row">
     <div class="span6 offset3">
-    <h1>Search Posts</h1>
+    <h3>Search for Users for Birthday</h3>
         <form accept-charset="UTF-8" action="queryUserForBDay.php" method="post"><div style="margin:0;padding:0;display:inline"></div>
 
             <label for="bday">Bday</label>
