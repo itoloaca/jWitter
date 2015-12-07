@@ -64,10 +64,11 @@ inner join FollowerFollowed F on UFollowed.userId = F.followedId
 inner join User UFollower on F.followerId = UFollower.userId 
 where UFollowed.email = '$email'";
 
-$sqlPosts = "SELECT U.name, P.content, P.created_at
+$sqlPosts = "SELECT U1.name, P.content, P.created_at
 FROM User U
 INNER JOIN FollowerFollowed F ON U.userId = F.followerId
-INNER JOIN Post P ON F.followedId
+INNER JOIN Post P ON F.followedId = P.authorId
+INNER JOIN User U1 ON U1.userId = F.followedId
 WHERE U.email = '$email'
 ORDER BY P.created_at DESC";
 
