@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +24,7 @@
       <nav>
         <ul class="nav pull-right">
           <li><a href="index">Home</a></li>
-            <li><a href="#">Sign in</a></li>
+            <li><a href="signin.php">Sign in</a></li>
             <li><a style="color:green" href="input_form_maintenance">Maintenance</a></li>
         </ul>
       </nav>

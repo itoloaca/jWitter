@@ -11,9 +11,11 @@ include('php/header.php');
         <a href="#">jWitter</a>
       application.  
     </h2>
+    
 
-    <a href="#" class="btn btn-primary btn-large">Sign up now!</a>
-  </div>
+
+    <a href="registration.php" class="btn btn-primary btn-large">Sign up now!</a>
+</div>
 
 <?php
 include('php/footer.php');
