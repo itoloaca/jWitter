@@ -215,7 +215,7 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) 
       $created_at = time_elapsed_string(strtotime($ans["created_at"]));
         echo "
         <li id='{$currId}'>
-          <a href='#'><img alt='{}' class='gravatar' src='http://www.gravatar.com/avatar/03037e249b97891693d6e292289be0ff.png?s=50'></a>
+          <a href='#'><img alt='{}' class='gravatar' src='http://www.gravatar.com/avatar/45f38e6772f559c4a619207d755bb8b8.png?s=50'></a>
           <span class='user'>
             <a href='#'>{$name}</a>
           </span>
