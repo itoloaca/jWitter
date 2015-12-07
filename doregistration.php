@@ -30,8 +30,8 @@ mysql_close($con);
 
 echo "SUCCESS";
 $_SESSION["status_success"] = "Registration successful";
-
-header("Location: signin.php");
+$_SESSION['0xDEADBEEF'] = $_POST['email'];
+header("Location: index.php");
 
 exit();
 
