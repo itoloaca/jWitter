@@ -1,5 +1,9 @@
 <?php
 session_start();
+include('bootstrap/config.php');
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
 $password = $_POST['password'];
 $password_hash = sha1($_POST['password']);
 
@@ -14,7 +18,7 @@ mysql_select_db("dbwa_sparta", $con);
 
 
 $sql = "SELECT * FROM User U WHERE 
-U.email ='$_POST[email]' and 
+U.email ='$_POST[email]' AND 
 U.password_hash = '$password_hash'";
 
 $result = mysql_query($sql, $con);
@@ -34,8 +38,8 @@ mysql_close($con);
 
 echo "SUCCESS";
 $email = $_POST['email'];
-$_SESSION["0xDEADBEEF"] = openssl_encrypt($email, 'aes-128-cbc',
-    $encrypt_pass);
+$_SESSION["0xDEADBEEF"] = $email;
+
 $_SESSION["status_success"] = "Signin successful";
 header("Location: index.php");
 exit();

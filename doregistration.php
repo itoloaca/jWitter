@@ -26,11 +26,11 @@ if (!mysql_query($sql, $con)) {
 	exit('Error: ' . mysql_error());
 }
 
+mysql_close($con);
+
 echo "SUCCESS";
 $_SESSION["status_success"] = "Registration successful";
 
-
-mysql_close($con);
 header("Location: signin.php");
 
 exit();
