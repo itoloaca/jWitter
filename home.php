@@ -196,7 +196,7 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) 
       <form accept-charset='UTF-8' action='php/create_post.php' class='new_micropost' id='new_micropost' method='post'><div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓'><input name='authenticity_token' type='hidden' value='/FwC2PuAyZEwe6ezzdUfbdqOpylCKjqg/91OqKU/N5s='></div>
 
         <div class='field'>
-          <textarea cols='40' id='post_content' name='content' placeholder='Compose new micropost...' rows='20'></textarea>
+          <textarea cols='40' id='post_content' name='content' placeholder='Compose new post...' rows='20'></textarea>
         </div>
         <input type='hidden' name='authorId' value='<?php echo $sqlNameId["ID"] ?>'>
         <input class='btn btn-large btn-primary' name='commit' type='submit' value='Post'>
@@ -205,7 +205,7 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) 
     </section>
   </aside>
   <div class='span8'>
-    <h3>Micropost Feed</h3>
+    <h3>Feed</h3>
     <ol class='microposts'>
 
       <?php 

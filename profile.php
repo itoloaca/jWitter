@@ -48,10 +48,21 @@ if (!$con) {
 
 mysql_select_db("dbwa_sparta", $con);
 $email = urldecode($_GET["email"]);
+$selfEmail = $_SESSION["0xDEADBEEF"];
+$sqlFollowedBySelf = "SELECT *
+FROM User U1
+INNER JOIN FollowerFollowed F ON U1.userId = F.followerId
+INNER JOIN User U2 ON U2.userId = F.followedId
+WHERE U1.email='$selfEmail' AND U2.email='$email'";
 
 $sqlNameId = "SELECT U.name, U.userId
 FROM User U
 where U.email='$email'";
+
+$emailSelf = $_SESSION['0xDEADBEEF'];
+$sqlNameIdSelf = "SELECT U.name, U.userId
+FROM User U
+where U.email='$emailSelf'";
 
 $sqlOwnCount = "SELECT * FROM User U
 INNER JOIN Post P on U.userId = P.authorId
@@ -88,6 +99,17 @@ if (!$sqlNameIter) {
   $sqlNameId["ID"] = $row[1];
 }
 
+$sqlNameSelfIter = mysql_query($sqlNameIdSelf, $con);
+$sqlNameIdSelf = array();
+if (!$sqlNameSelfIter) {
+  $sqlNameIdSelf["ERROR"] = "Error: " . mysql_error();
+} else if (mysql_num_rows($sqlNameSelfIter) == 0) {
+ $sqlNameIdSelf["ERROR"] = "Error: user not found";
+} else {
+  $row = mysql_fetch_array($sqlNameSelfIter, MYSQL_NUM);
+  $sqlNameIdSelf["NAME"] = $row[0];
+  $sqlNameIdSelf["ID"] = $row[1];
+}
 
 $sqlOwnCountIter = mysql_query($sqlOwnCount, $con);
 $sqlOwnCount = 0;
@@ -102,6 +124,15 @@ if (!$sqlFollowerCountIter) {
   $sqlFollowerCount = 'Error: ' . mysql_error();
 } else {
   $sqlFollowerCount = mysql_num_rows($sqlFollowerCountIter);
+}
+
+
+$sqlFollowedBySelfIter = mysql_query($sqlFollowedBySelf, $con);
+$sqlFollowedBySelf = 0;
+if (!$sqlFollowedBySelfIter) {
+  $sqlFollowedBySelf = 'Error: ' . mysql_error();
+} else {
+  $sqlFollowedBySelf = mysql_num_rows($sqlFollowedBySelfIter);
 }
 
 
@@ -185,34 +216,48 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) 
       echo("<div class='alert alert-error'>{$alert}</div>");
     }
     ?>
-  
+
   </aside>
   <div class='span8'>
-    <h3>Micropost Feed</h3>
-    <ol class='microposts'>
+    <div id="follow_form">
+      <form  action="php/create_follow.php" method="post">
+      <input type="hidden" name="followerId" value="<?php echo $sqlNameIdSelf['ID'];?>"/>
+      <input type="hidden" name="followedId" value="<?php echo $sqlNameId['ID'];?>"/>
+      <input type="hidden" name="followedEmail" value="<?php echo $email; ?>"/>
+      <input type="hidden" name="delete" value="<?php echo $sqlFollowedBySelf; ?>"/>
+      <input class="btn btn-large <?php if ($sqlFollowedBySelf == 0) { echo 'btn-primary'; }?>" 
+        name="commit" 
+        type="submit" 
+        value="<?php if ($sqlFollowedBySelf == 0) {echo "Follow";} else {echo "Unfollow";}?>"
+        /input>
+    </form>            
+  </div>
 
-      <?php 
-      $currId = 1;
-      foreach($sqlPosts["answers"] as $ans) {
+  <h3>Posts</h3>
+  <ol class='microposts'>
+
+    <?php 
+    $currId = 1;
+    foreach($sqlPosts["answers"] as $ans) {
       $content = $ans["content"];
       date_default_timezone_set('Europe/Berlin');
       $created_at = time_elapsed_string(strtotime($ans["created_at"]));
-        echo "
-        <li id='{$currId}'>
-          <span class='content'>{$content}</span>
-          <span class='timestamp'>
-            {$created_at}
-          </span>
-        </li>
-        ";
-        $currId = $currId + 1;
-      }
-      ?>
+      echo "
+      <li id='{$currId}'>
+        <span class='content'>{$content}</span>
+        <span class='timestamp'>
+          {$created_at}
+        </span>
+      </li>
+      ";
+      $currId = $currId + 1;
+    }
+    ?>
 
-    </ol>
-    
+  </ol>
 
-  </div>
+
+</div>
 </div>
 
 <?php
