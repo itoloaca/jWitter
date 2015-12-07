@@ -2,21 +2,15 @@
 include('php/header.php');
 ?>
 
+<?php
+$_SESSION["email"] = "FAKEVAL";
 
- <div class="center hero-unit" style="background-color: #e6f3f7;">
-    <h1>Welcome to jWitter</h1>
-
-    <h2>
-      You are currently viewing the homepage for the 
-        <a href="#">jWitter</a>
-      application.  
-    </h2>
-    
-
-
-    <a href="registration.php" class="btn btn-primary btn-large">Sign up now!</a>
-</div>
-
+if (!isset($_SESSION["email"])) {
+	readfile('basicindex.html'); 
+} else {
+	include('home.php');
+} 
+?>
 <?php
 include('php/footer.php');
 ?>
