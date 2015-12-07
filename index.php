@@ -1,6 +1,5 @@
 <?php
 include('php/header.php');
-include('debug.php');
 ?>
 
 <?php

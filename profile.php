@@ -1,4 +1,8 @@
 <?php
+include('php/header.php');
+?>
+
+<?php
 /////////////////////////////////// 
 //Reference: http://stackoverflow.com/questions/1416697/converting-timestamp-to-time-ago-in-php-e-g-1-day-ago-2-days-ago
 function time_elapsed_string($ptime)
@@ -36,14 +40,15 @@ function time_elapsed_string($ptime)
   }
 }
 ///////////////////////////////////
-
+include('bootstrap/config.php');
 $con = mysql_connect("localhost:3306", "dbwa_sparta", $db_pass);
 if (!$con) {
   die('Could not connect: ' . mysql_error());
 }
 
 mysql_select_db("dbwa_sparta", $con);
-$email = $_SESSION["0xDEADBEEF"];
+$email = urldecode($_GET["email"]);
+
 $sqlNameId = "SELECT U.name, U.userId
 FROM User U
 where U.email='$email'";
@@ -64,11 +69,9 @@ inner join FollowerFollowed F on UFollowed.userId = F.followedId
 inner join User UFollower on F.followerId = UFollower.userId 
 where UFollowed.email = '$email'";
 
-$sqlPosts = "SELECT U1.name, P.content, P.created_at, U1.email
+$sqlPosts = "SELECT P.content, P.created_at
 FROM User U
-INNER JOIN FollowerFollowed F ON U.userId = F.followerId
-INNER JOIN Post P ON F.followedId = P.authorId
-INNER JOIN User U1 ON U1.userId = F.followedId
+INNER JOIN Post P ON U.userId = P.authorId
 WHERE U.email = '$email'
 ORDER BY P.created_at DESC";
 
@@ -122,15 +125,11 @@ if (!$sqlPostsIter) {
   $sqlPosts["HASPOSTS"] = True;
   $sqlPosts["answers"] = array();
   while($row = mysql_fetch_array($sqlPostsIter, MYSQL_NUM)) {
-    $name = $row[0];
-    $content = $row[1];
-    $created_at = $row[2];
-    $currEmail = $row[3];
+    $content = $row[0];
+    $created_at = $row[1];
     $currResult = array();
-    $currResult['name'] = $name;
     $currResult['content'] = $content;
     $currResult['created_at'] = $created_at;
-    $currResult['email'] = $currEmail;
     array_push($sqlPosts["answers"], $currResult);
   }
 }
@@ -154,12 +153,6 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) 
       <h1>
         <?php echo $sqlNameId["NAME"]; ?>
       </h1>
-      <span>
-        <a href='#'> view profile</a>
-      </span>
-      <span>
-        <?php echo $sqlOwnCount; ?> microposts
-      </span>
 
     </section>
     <section>
@@ -192,17 +185,7 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) 
       echo("<div class='alert alert-error'>{$alert}</div>");
     }
     ?>
-    <section>
-      <form accept-charset='UTF-8' action='php/create_post.php' class='new_micropost' id='new_micropost' method='post'><div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓'><input name='authenticity_token' type='hidden' value='/FwC2PuAyZEwe6ezzdUfbdqOpylCKjqg/91OqKU/N5s='></div>
-
-        <div class='field'>
-          <textarea cols='40' id='post_content' name='content' placeholder='Compose new micropost...' rows='20'></textarea>
-        </div>
-        <input type='hidden' name='authorId' value='<?php echo $sqlNameId["ID"] ?>'>
-        <input class='btn btn-large btn-primary' name='commit' type='submit' value='Post'>
-        <span class='countdown pull-right'>140 characters left </span>
-      </form>
-    </section>
+  
   </aside>
   <div class='span8'>
     <h3>Micropost Feed</h3>
@@ -211,17 +194,11 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) 
       <?php 
       $currId = 1;
       foreach($sqlPosts["answers"] as $ans) {
-      $name = $ans["name"];
       $content = $ans["content"];
       date_default_timezone_set('Europe/Berlin');
       $created_at = time_elapsed_string(strtotime($ans["created_at"]));
-      $href = "profile.php?email=".urlencode($ans["email"]);
         echo "
         <li id='{$currId}'>
-          <a href='#'><img alt='{}' class='gravatar' src='http://www.gravatar.com/avatar/45f38e6772f559c4a619207d755bb8b8.png?s=50'></a>
-          <span class='user'>
-            <a href='$href'>{$name}</a>
-          </span>
           <span class='content'>{$content}</span>
           <span class='timestamp'>
             {$created_at}
@@ -237,3 +214,7 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) 
 
   </div>
 </div>
+
+<?php
+include('php/footer.php');
+?>

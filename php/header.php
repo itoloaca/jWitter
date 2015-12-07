@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('bootstrap/config.php');
+include('debug.php');
 ?>
 <!DOCTYPE html>
 <html>
