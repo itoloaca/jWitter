@@ -210,25 +210,27 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) 
 
       <?php 
       $currId = 1;
-      foreach($sqlPosts["answers"] as $ans) {
-      $name = $ans["name"];
-      $content = $ans["content"];
-      date_default_timezone_set('Europe/Berlin');
-      $created_at = time_elapsed_string(strtotime($ans["created_at"]));
-      $href = "profile.php?email=".urlencode($ans["email"]);
-        echo "
-        <li id='{$currId}'>
-          <a href='#'><img alt='{}' class='gravatar' src='http://www.gravatar.com/avatar/45f38e6772f559c4a619207d755bb8b8.png?s=50'></a>
-          <span class='user'>
-            <a href='$href'>{$name}</a>
-          </span>
-          <span class='content'>{$content}</span>
-          <span class='timestamp'>
-            {$created_at}
-          </span>
-        </li>
-        ";
-        $currId = $currId + 1;
+      if ($sqlPosts["HASPOSTS"]) {
+        foreach($sqlPosts["answers"] as $ans) {
+          $name = $ans["name"];
+          $content = $ans["content"];
+          date_default_timezone_set('Europe/Berlin');
+          $created_at = time_elapsed_string(strtotime($ans["created_at"]));
+          $href = "profile.php?email=".urlencode($ans["email"]);
+          echo "
+          <li id='{$currId}'>
+            <a href='#'><img alt='{}' class='gravatar' src='http://www.gravatar.com/avatar/45f38e6772f559c4a619207d755bb8b8.png?s=50'></a>
+            <span class='user'>
+              <a href='$href'>{$name}</a>
+            </span>
+            <span class='content'>{$content}</span>
+            <span class='timestamp'>
+              {$created_at}
+            </span>
+          </li>
+          ";
+          $currId = $currId + 1;
+        }
       }
       ?>
 

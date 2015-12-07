@@ -29,9 +29,12 @@ include('debug.php');
              <?php 
               if (!isset($_SESSION["0xDEADBEEF"])) {
                 echo "<li><a href='signin.php'>Sign in</a></li>";
+                
               } else {
+                echo "<li><a href='users.php'>Users</a></li>";
                 echo "<li><a href='logout.php'>Log out</a></li>";
               }
+
               ?>
             <li><a style="color:green" href="input_form_maintenance">Maintenance</a></li>
         </ul>
