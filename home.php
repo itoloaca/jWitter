@@ -68,7 +68,8 @@ $sqlPosts = "SELECT U.name, P.content, P.created_at
 FROM User U
 INNER JOIN FollowerFollowed F ON U.userId = F.followerId
 INNER JOIN Post P ON F.followedId
-WHERE U.email = '$email'";
+WHERE U.email = '$email'
+ORDER BY P.created_at DESC";
 
 
 $sqlNameIter = mysql_query($sqlNameId, $con);
@@ -206,17 +207,18 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) 
 
       <?php 
       $currId = 1;
+      foreach($sqlPosts["answers"] as $ans) {
       $name = $ans["name"];
       $content = $ans["content"];
-      $created_at = time_elapsed_string($ans["created_at"]);
-      foreach($sqlPosts["answers"] as $ans) {
+      date_default_timezone_set('Europe/Berlin');
+      $created_at = time_elapsed_string(strtotime($ans["created_at"]));
         echo "
         <li id='{$currId}'>
           <a href='#'><img alt='{}' class='gravatar' src='http://www.gravatar.com/avatar/03037e249b97891693d6e292289be0ff.png?s=50'></a>
           <span class='user'>
             <a href='#'>{$name}</a>
           </span>
-          <span class='content'>Qui quos repellendus dolorem veniam excepturi.</span>
+          <span class='content'>{$content}</span>
           <span class='timestamp'>
             {$created_at}
           </span>
